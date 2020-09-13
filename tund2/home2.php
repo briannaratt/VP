@@ -12,17 +12,25 @@
  if($hournow >= 8 and $hournow < 18) {
 	 $partofday = "õppimise aeg";
  }
-if($hournow >= 19 and $hournow < 21) {
+ if($hournow >= 19 and $hournow < 21) {
+	 $partofday = "puhkamise aeg";
+ }
+ if($hournow > 21) {
+	 $partofday = "uneaeg";
  }
  
  //jälgime semestri kulgu
  $semesterstart = new DateTime("2020-8-31");
  $semesterend = new DateTime("2020-12-13");
  $semesterduration = $semesterstart->diff($semesterend);
+ $semesterdurationdays = $semesterduration->format("%r%a");
  $today = new DateTime("now");
  $fromsemesterstart = $semesterstart->diff($today);
  //saime aja erinevuse objektina, seda niisama näidata ei saa
  $fromsemesterstartdays = $fromsemesterstart->format("%r%a");
+ $alltimesemester = $semesterstart->diff($semesterend);
+ $alltimesemesterdays = $alltimesemester->format("%r%a");
+ $dayspercentage = round($fromsemesterstartdays / $alltimesemesterdays * 100)
  
 ?>
 
@@ -40,5 +48,11 @@ if($hournow >= 19 and $hournow < 21) {
   <p>Leht on loodud veebiprogrammeerimise kursusel <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis<p>
   <p>Lehe avamise aeg: <?php echo $fulltimenow .", semestri algusest on möödunud " .$fromsemesterstartdays ." päeva"; ?>.
   <?php echo "Parajasti on " .$partofday ."."; ?></p>
+  <p>Semestri kestus päevades: <?php echo $alltimesemesterdays; ?></p>
+  <p>Semestrist on läbitud <?php echo $dayspercentage; ?> %!</p>
+  
 </body>
 </html>
+
+
+
