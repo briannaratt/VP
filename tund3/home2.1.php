@@ -43,6 +43,9 @@ while($stmt->fetch()){
  $fulltimenow = date("d.m.Y H:i:s");
  $hournow = date("H");
  $partofday = "lihtsalt aeg";
+ $daynrnow = date("j");
+ $yearnow = date("o");
+ $timenow = date("H:i:s");
  
  //vaatame, mida vormist serverile saadetakse
  var_dump($_POST);
@@ -53,6 +56,7 @@ while($stmt->fetch()){
  
  //küsime nädalapäeva
  $weekdaynow = date("N");
+ $monthnow = date("F");
  //echo $weekdaynow;
  
  if($hournow < 6){
@@ -122,7 +126,8 @@ while($stmt->fetch()){
   <h1><?php echo $username; ?> programmeerib veebi</h1>
   <p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
   <p>Leht on loodud veebiprogrammeerimise kursusel <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis<p>
-  <p>Lehe avamise aeg: <?php echo $weekdaynameset[$weekdaynow - 1] .", " . $fulltimenow .". Semestri algusest on möödunud " .$fromsemesterstartdays ." päeva"; ?>.
+  <p>Lehe avamise aeg: <?php echo $weekdaynameset[$weekdaynow - 1]. ", ". $daynrnow .". ". $monthnow ." ". $yearnow ." ". ", kell ". $timenow. "."; ?></p>
+  <?php echo "Semestri algusest on möödunud " .$fromsemesterstartdays ." päeva"; ?></p>
   <?php echo "Parajasti on " .$partofday ."."; ?></p>
   <p>Semestri kestus päevades: <?php echo $alltimesemesterdays; ?></p>
   <p>Semestrist on läbitud <?php echo $dayspercentage; ?> %!</p>
