@@ -1,5 +1,5 @@
 <?php
-require("header.php");
+
  $username = "Brianna Ratt";
  $fulltimenow = date("d.m.Y H:i:s");
  $hournow = date("H");
@@ -79,6 +79,7 @@ require("header.php");
  $imghtml.= '<img src="../vp_pics/' .$allpicfiles[mt_rand(0,$piccount - 1)] .'" ';
  $imghtml .= 'alt="Tallinna Ülikool">';
  
+ require("header.php");
 ?>
 
 <img src="../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
@@ -97,6 +98,7 @@ require("header.php");
   <li><a href="mõttesisestamine.php">Mõtete lisamine</a></li>
   <li><a href="sisestatudmõtted.php">Lisatud mõtted</a></li>
   <li><a href="listfilms.php"> Filmiinfo näitamine</a></li>
+  <li><a href="addfilms.php">Filmiinfo lisamine</a></li>
  </ul>
   
 </body>
